@@ -209,7 +209,7 @@ for row in "${LAYERS[@]}"; do
   crate="${row%%:*}"
   tier=$(tier_of "$crate")
   deps=$(cargo tree -p "$crate" --depth 1 -e normal,build --prefix none --all-features 2>/dev/null \
-    | grep -E '\((/|https://github.com/PoHsuanLai/)' | awk '{print $1}' | grep -vx "$crate" | sort -u)
+    | grep -E '\((/|https://github.com/(PoHsuanLai|Bardo-DE)/)' | awk '{print $1}' | grep -vx "$crate" | sort -u)
   bad=0
   for dep in $deps; do
     dep_tier=$(tier_of "$dep")
@@ -235,7 +235,7 @@ for entry in "${ONLY[@]}"; do
   crate="${entry%%:*}"
   read -r -a allowed <<<"${entry#*:}"
   found=$(cargo tree -p "$crate" --depth 1 -e normal,build --prefix none --all-features 2>/dev/null \
-    | grep -E '\((/|https://github.com/PoHsuanLai/)' | awk '{print $1}' | grep -vx "$crate" | sort -u | tr '\n' ' ')
+    | grep -E '\((/|https://github.com/(PoHsuanLai|Bardo-DE)/)' | awk '{print $1}' | grep -vx "$crate" | sort -u | tr '\n' ' ')
   want=$(printf '%s\n' "${allowed[@]}" | sort -u | tr '\n' ' ')
   if [ "$found" != "$want" ]; then
     echo "ONLY: $crate depends on [${found% }], the table allows [${want% }]"
