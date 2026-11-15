@@ -688,9 +688,9 @@ needs: docket pin bump, `docket-reader` in `[workspace.dependencies]`, and cuad'
 
 ## Simplification lane (E-C1 to E-C3, 2026-10-28)
 
-CONVENTIONS 11 now holds the owner's type rules of 2026-10-28 (bool allowed; one fact, one type;
-two-way outcomes are `Result`/`Option`; growing sets are data; newtypes only with a rule), and 2
-no longer says "never `dyn`". Done: `Option` for the absent desktop, capture and tree (the
+The owner's type rules of 2026-10-28 now apply (bool allowed; one fact, one type;
+two-way outcomes are `Result`/`Option`; growing sets are data; newtypes only with a rule), and
+"never `dyn`" is gone. Done: `Option` for the absent desktop, capture and tree (the
 single-variant `SeatBackend`, `SystemDesktop`, `SystemA11y`, `CaptureKind` and the second
 capture-session kind are gone); one `Switch` for `cua.enabled`, `cua.autopause`,
 `cua.accessibility` and `cua.screens.keep` (keys and stored words unchanged; the reader takes
